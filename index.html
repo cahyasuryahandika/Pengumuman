@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengumuman Kelulusan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pengumuman Kelulusan</h1>
+    <h3>SDN Negeri 1 Sumberkepuh</h3>
+    <p>Tahun Ajaran 2024/2025</p>
+    
+    <input type="text" id="nisnInput" placeholder="Masukkan NISN Anda" />
+    <br>
+    <button onclick="cekKelulusan()">Cek Kelulusan</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const dataKelulusan = {
+      "1234567890": { nama: "Ahmad Putra", status: "LULUS" },
+      "0987654321": { nama: "Siti Aminah", status: "TIDAK LULUS" },
+      "1122334455": { nama: "Budi Santoso", status: "LULUS" },
+      // Tambahkan data lainnya di sini
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisnInput").value;
+      const resultDiv = document.getElementById("result");
+
+      if (dataKelulusan[nisn]) {
+        const siswa = dataKelulusan[nisn];
+        resultDiv.innerHTML = `
+          <strong>Nama:</strong> ${siswa.nama}<br>
+          <strong>Status:</strong> ${siswa.status}
+        `;
+      } else {
+        resultDiv.innerHTML = "Data tidak ditemukan. Periksa kembali NISN Anda.";
+      }
+    }
+  </script>
+</body>
+</html>
